@@ -17,19 +17,7 @@ public class FlattenedRoom
     public FlattenedRoom(int roomNumber, Facility facility)
     {
         RoomNumber = roomNumber;
-
-        var props = typeof(FlattenedRoom).GetProperties();
-
-        foreach (var prop in props)
-        {
-            var attr = prop.GetCustomAttributes(typeof(FlattenedFlag), false);
-
-            if (attr.GetLength(0) > 0)
-            {
-                prop.SetValue(this, facility.HasFlag(((FlattenedFlag)attr[0]).FacilityEnum));
-            }
-
-        }
+        FlattenedFlagAttribute.Flatten(typeof(FlattenedRoom), this, facility);
 
         Console.WriteLine("End");
     }
