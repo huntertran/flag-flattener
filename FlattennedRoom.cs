@@ -17,7 +17,7 @@ public class FlattenedRoom
     public FlattenedRoom(int roomNumber, Facility facility)
     {
         RoomNumber = roomNumber;
-        FlattenedFlagAttribute.Flatten(typeof(FlattenedRoom), this, facility);
+        FlattenedFlagAttribute.Flatten(this, facility);
 
         Console.WriteLine("End");
     }
@@ -25,9 +25,10 @@ public class FlattenedRoom
     public FlattenedRoom(Room room)
     {
         RoomNumber = room.RoomNumber;
-        HasMicrowave = room.Facilities.HasFlag(Facility.HasMicrowave);
-        HasTV = room.Facilities.HasFlag(Facility.HasTV);
-        HasOven = room.Facilities.HasFlag(Facility.HasOven);
+        FlattenedFlagAttribute.Flatten(this, room.Facilities);
+        // HasMicrowave = room.Facilities.HasFlag(Facility.HasMicrowave);
+        // HasTV = room.Facilities.HasFlag(Facility.HasTV);
+        // HasOven = room.Facilities.HasFlag(Facility.HasOven);
     }
 
     public override string ToString()

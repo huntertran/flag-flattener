@@ -26,12 +26,11 @@ public class FlattenedFlagAttribute : Attribute
     /// <br/>
     /// The method couldn't infer the type, as it's property is type of <seealso cref="System.Enum"/>, and generic attribute is not yet supported.
     /// </summary>
-    /// <param name="type">Type of enum.</param>
     /// <param name="o">Object contains the flattened boolean data</param>
     /// <param name="enumData">The enum data, retrived directly from Database</param>
-    public static void Flatten(Type type, object o, Enum enumData)
+    public static void Flatten(object o, Enum enumData)
     {
-        var props = type.GetProperties();
+        var props = o.GetType().GetProperties();
 
         foreach (var prop in props)
         {
