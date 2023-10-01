@@ -1,7 +1,7 @@
 using System;
 
 /// <summary>
-/// A convenient attribute to decorate flattened classes of the class utilizing <seealso cref="System.FlagsAttribute"/>.
+/// A convenient attribute to decorate flattened classes of the class utilizing <seealso cref="FlagsAttribute"/>.
 /// <br/>
 /// For each type of enum, there should be a 
 /// corresponding constructor, as generic attribute is not yet supported
@@ -18,7 +18,7 @@ public class FlattenedFlagAttribute : Attribute
     /// <param name="facility">the enum type</param>
     public FlattenedFlagAttribute(Facility facility)
     {
-        this.enumProperty = facility;
+        enumProperty = facility;
     }
 
     /// <summary>
